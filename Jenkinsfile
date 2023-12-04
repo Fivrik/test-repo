@@ -1,23 +1,26 @@
 pipeline {
-    agent any
-    options {
-        skipStagesAfterUnstable()
+  agent any
+  stages {
+    stage('Build') {
+      steps {
+        echo 'Building'
+      }
     }
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying'
-            }
-        }
+
+    stage('Test') {
+      steps {
+        echo 'Testing'
+      }
     }
+
+    stage('Deploy') {
+      steps {
+        echo 'Deploying'
+      }
+    }
+
+  }
+  options {
+    skipStagesAfterUnstable()
+  }
 }
